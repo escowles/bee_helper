@@ -1,0 +1,5 @@
+#!/bin/sh
+
+DIR=`dirname $0`
+cd $DIR/..
+pbpaste | bundle exec bin/bee_helper.rb
