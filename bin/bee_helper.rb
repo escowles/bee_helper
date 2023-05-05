@@ -50,6 +50,9 @@ hints.xpath("//table/tr").each do |row|
   end
 end
 
+total_words = 0
+total_found = 0
+
 just = 6
 print "    "
 table.first[1].each do |v|
@@ -60,6 +63,8 @@ table.each_pair do |k, v|
   print "#{k}: "
   v.each_pair do |k2, v2|
     count = word_count(k, k2.to_i)
+    total_words += v2
+    total_found += count
     val = "#{count}/#{v2}"
     if count == v2
       print val.ljust(just)
@@ -67,5 +72,6 @@ table.each_pair do |k, v|
       print "\e[31m#{val.ljust(just)}\e[0m"
     end
   end
+  print " #{total_found}/#{total_words}" if k == table.keys.last
   puts
 end
